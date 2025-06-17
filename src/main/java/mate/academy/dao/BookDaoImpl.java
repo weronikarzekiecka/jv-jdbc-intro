@@ -83,7 +83,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Book update(Book book) {
         String query = "UPDATE books SET title = ?, price = ? WHERE id = ?";
-        try (Connection connection = ConnectionUtil.getConnection();
+            try (Connection connection = ConnectionUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, book.getTitle());
             statement.setBigDecimal(2, book.getPrice());
@@ -98,7 +98,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public boolean removeById(Long id) {
         String query = "DELETE FROM books WHERE id = ?";
-        try (Connection connection = ConnectionUtil.getConnection();
+            try (Connection connection = ConnectionUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, id);
             int rowsChanged = statement.executeUpdate();
